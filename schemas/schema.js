@@ -12,6 +12,23 @@ export default createSchema({
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
     {
+      name: 'author',
+      type: 'document',
+      title: 'Author',
+      fields: [
+        {
+          name: 'name',
+          title: 'Name',
+          type: 'string'
+        },
+        {
+          name: 'avatar',
+          title: 'Avatar',
+          type: 'image'
+        }
+      ]
+    },
+    {
       name: 'blog',
       type: 'document',
       title: 'Blog',
@@ -35,6 +52,12 @@ export default createSchema({
           name: 'date',
           title: 'Date',
           type: 'datetime'
+        },
+        {
+          name: 'author',
+          title: 'Author',
+          type: 'reference',
+          to: [{type: 'author'}]
         },
         {
           name: 'slug',
